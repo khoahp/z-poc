@@ -38,7 +38,10 @@
 			<finder-column name="groupId" />
 			<finder-column name="status" />
 		</finder>
-
+		<finder return-type="Collection" name="FCOMPANY_GROUP_ID">
+			<finder-column name="companyId" />
+			<finder-column name="groupId" />
+		</finder>
 	</entity>
 
 
