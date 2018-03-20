@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_2_0.dtd">
+<service-builder package-path="com.zeus.hr">
+	<namespace>zhr</namespace>
+
+
+	<entity name="Candidate" uuid="true" local-service="true"
+		remote-service="false" cache-enabled="false">
+		<column name="candidateId" type="long" primary="true" id-type="increment"></column>
+		<column name="companyId" type="long"></column>
+		<column name="groupId" type="long"></column>
+
+		<column name="firstName" type="String"></column>
+		<column name="lastName" type="String"></column>
+		<column name="dateOfBirth" type="Date"></column>
+		<column name="mobilePhone" type="String"></column>
+		<column name="email" type="String"></column>
+		<column name="city" type="long"></column>
+		<column name="appliedFor" type="String"></column>
+		<column name="note" type="String"></column>
+		<column name="skills" type="String"></column>
+		<column name="source" type="String"></column>
+		<column name="internalId" type="String"></column>
+		<column name="receivedDate" type="Date"></column>
+		<column name="internalNote" type="String"></column>
+		<column name="internalDetails" type="String"></column>
+		<column name="attachment" type="String"></column>
+		<column name="rating" type="int"></column>
+		<column name="createDate" type="Date"></column>
+		<column name="modifiedDate" type="Date"></column>
+		<column name="createdUser" type="long"></column>
+		<column name="modifiedUser" type="long"></column>
+		<column name="status" type="int" />
+
+
+		<finder return-type="Collection" name="status">
+			<finder-column name="companyId" />
+			<finder-column name="groupId" />
+			<finder-column name="status" />
+		</finder>
+
+	</entity>
+
+
+	<entity name="HrAction" uuid="true" local-service="true"
+		remote-service="false" cache-enabled="false">
+		<column name="feedbackId" type="long" primary="true" id-type="increment" />
+		<column name="candidateId" type="long" />
+		<column name="companyId" type="long"></column>
+		<column name="groupId" type="long"></column>
+
+		<column name="type" type="String"></column>
+		<column name="date" type="Date"></column>
+		<column name="note" type="String"></column>
+		<column name="feedback" type="String"></column>
+
+		<column name="createDate" type="Date"></column>
+		<column name="modifiedDate" type="Date"></column>
+		<column name="createdUser" type="long"></column>
+		<column name="modifiedUser" type="long"></column>
+
+
+		<finder return-type="Collection" name="candidateId">
+			<finder-column name="companyId" />
+			<finder-column name="groupId" />
+			<finder-column name="candidateId" />
+		</finder>
+
+	</entity>
+
+
+</service-builder>

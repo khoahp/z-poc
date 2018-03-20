@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="com.zeus.hr.model.Candidate">
+		<field name="uuid" type="String" />
+		<field name="candidateId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="firstName" type="String" />
+		<field name="lastName" type="String" />
+		<field name="dateOfBirth" type="Date" />
+		<field name="mobilePhone" type="String" />
+		<field name="email" type="String" />
+		<field name="city" type="long" />
+		<field name="appliedFor" type="String" />
+		<field name="note" type="String" />
+		<field name="skills" type="String" />
+		<field name="source" type="String" />
+		<field name="internalId" type="String" />
+		<field name="receivedDate" type="Date" />
+		<field name="internalNote" type="String" />
+		<field name="internalDetails" type="String" />
+		<field name="attachment" type="String" />
+		<field name="rating" type="int" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="createdUser" type="long" />
+		<field name="modifiedUser" type="long" />
+		<field name="status" type="int" />
+	</model>
+	<model name="com.zeus.hr.model.HrAction">
+		<field name="uuid" type="String" />
+		<field name="feedbackId" type="long" />
+		<field name="candidateId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="type" type="String" />
+		<field name="date" type="Date" />
+		<field name="note" type="String" />
+		<field name="feedback" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="createdUser" type="long" />
+		<field name="modifiedUser" type="long" />
+	</model>
+</model-hints>

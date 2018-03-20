@@ -1,0 +1,9 @@
+Bundle-Name: poc-candidate-api
+Bundle-SymbolicName: com.poc.candidate.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.poc.candidate.exception,\
+	com.poc.candidate.model,\
+	com.poc.candidate.service,\
+	com.poc.candidate.service.persistence
+-includeresource: META-INF/service.xml=../poc-candidate-service/service.xml

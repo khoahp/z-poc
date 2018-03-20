@@ -1,0 +1,43 @@
+create table zhr_Candidate (
+	uuid_ VARCHAR(75) null,
+	candidateId LONG not null primary key,
+	companyId LONG,
+	groupId LONG,
+	firstName VARCHAR(75) null,
+	lastName VARCHAR(75) null,
+	dateOfBirth DATE null,
+	mobilePhone VARCHAR(75) null,
+	email VARCHAR(75) null,
+	city LONG,
+	appliedFor VARCHAR(75) null,
+	note VARCHAR(75) null,
+	skills VARCHAR(75) null,
+	source VARCHAR(75) null,
+	internalId VARCHAR(75) null,
+	receivedDate DATE null,
+	internalNote VARCHAR(75) null,
+	internalDetails VARCHAR(75) null,
+	attachment VARCHAR(75) null,
+	rating INTEGER,
+	createDate DATE null,
+	modifiedDate DATE null,
+	createdUser LONG,
+	modifiedUser LONG,
+	status INTEGER
+);
+
+create table zhr_HrAction (
+	uuid_ VARCHAR(75) null,
+	feedbackId LONG not null primary key,
+	candidateId LONG,
+	companyId LONG,
+	groupId LONG,
+	type_ VARCHAR(75) null,
+	date_ DATE null,
+	note VARCHAR(75) null,
+	feedback VARCHAR(75) null,
+	createDate DATE null,
+	modifiedDate DATE null,
+	createdUser LONG,
+	modifiedUser LONG
+);

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean class="com.zeus.hr.service.impl.CandidateLocalServiceImpl" id="com.zeus.hr.service.CandidateLocalService" />
+	<bean class="com.zeus.hr.service.persistence.impl.CandidatePersistenceImpl" id="com.zeus.hr.service.persistence.CandidatePersistence" parent="basePersistence" />
+	<bean class="com.zeus.hr.service.impl.HrActionLocalServiceImpl" id="com.zeus.hr.service.HrActionLocalService" />
+	<bean class="com.zeus.hr.service.persistence.impl.HrActionPersistenceImpl" id="com.zeus.hr.service.persistence.HrActionPersistence" parent="basePersistence" />
+</beans>
