@@ -29,7 +29,6 @@ public class POCRestAPIApplication extends Application {
 		// add REST endpoints (resources)
 		
 		
-
 		// add serviceProvider
 		singletons.add(_serviceContextProvider);
 		singletons.add(_companyContextProvider);
