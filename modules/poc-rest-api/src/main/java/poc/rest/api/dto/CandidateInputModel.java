@@ -8,6 +8,7 @@
 
 package poc.rest.api.dto;
 
+import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -72,22 +73,39 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "CandidateInputModel")
 public class CandidateInputModel {
 
+	@FormParam(value = "firstName")
     protected String firstName;
+	@FormParam(value = "lastName")
     protected String lastName;
+	@FormParam(value = "dateOfBirth")
     protected String dateOfBirth;
+	@FormParam(value = "mobilePhone")
     protected String mobilePhone;
+	@FormParam(value = "email")
     protected String email;
+	@FormParam(value = "city")
     protected Long city;
+	@FormParam(value = "appliedFor")
     protected String appliedFor;
+	@FormParam(value = "note")
     protected String note;
+	@FormParam(value = "skills")
     protected String skills;
+	@FormParam(value = "source")
     protected String source;
+	@FormParam(value = "internalId")
     protected String internalId;
+	@FormParam(value = "receivedDate")
     protected String receivedDate;
+	@FormParam(value = "internalNote")
     protected String internalNote;
+	@FormParam(value = "internalDetails")
     protected String internalDetails;
+	@FormParam(value = "attachment")
     protected String attachment;
+	@FormParam(value = "rating")
     protected Integer rating;
+	@FormParam(value = "status")
     protected Integer status;
 
     /**

@@ -8,6 +8,7 @@
 
 package poc.rest.api.dto;
 
+import javax.ws.rs.QueryParam;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -48,10 +49,15 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "CandidateSearchModel")
 public class CandidateSearchModel {
 
+	@QueryParam(value = "keyword")
     protected String keyword;
+	@QueryParam(value = "start")
     protected Integer start;
+	@QueryParam(value = "end")
     protected Integer end;
+	@QueryParam(value = "sort")
     protected String sort;
+	@QueryParam(value = "order")
     protected String order;
 
     /**

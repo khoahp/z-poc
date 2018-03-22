@@ -254,6 +254,12 @@ public class HrActionLocalServiceUtil {
 		return getService().getHrActions(start, end);
 	}
 
+	public static java.util.List<com.zeus.hr.model.HrAction> getHrActionsByCandidateId(
+		long companyId, long groupId, long candidateId) {
+		return getService()
+				   .getHrActionsByCandidateId(companyId, groupId, candidateId);
+	}
+
 	/**
 	* Returns all the hr actions matching the UUID and company.
 	*

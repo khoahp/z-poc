@@ -15,6 +15,7 @@ import poc.rest.api.context.provider.CompanyContextProvider;
 import poc.rest.api.context.provider.LocaleContextProvider;
 import poc.rest.api.context.provider.ServiceContextProvider;
 import poc.rest.api.context.provider.UserContextProvider;
+import poc.rest.api.controller.impl.ICandidateControllerImpl;
 
 /**
  * @author khoavu
@@ -27,7 +28,7 @@ public class POCRestAPIApplication extends Application {
 		Set<Object> singletons = new HashSet<>();
 		
 		// add REST endpoints (resources)
-		
+		singletons.add(new ICandidateControllerImpl());
 		
 		// add serviceProvider
 		singletons.add(_serviceContextProvider);

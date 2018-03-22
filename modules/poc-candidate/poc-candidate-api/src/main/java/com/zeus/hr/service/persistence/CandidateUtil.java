@@ -693,6 +693,187 @@ public class CandidateUtil {
 	}
 
 	/**
+	* Returns all the candidates where companyId = &#63; and groupId = &#63;.
+	*
+	* @param companyId the company ID
+	* @param groupId the group ID
+	* @return the matching candidates
+	*/
+	public static List<Candidate> findByFCOMPANY_GROUP_ID(long companyId,
+		long groupId) {
+		return getPersistence().findByFCOMPANY_GROUP_ID(companyId, groupId);
+	}
+
+	/**
+	* Returns a range of all the candidates where companyId = &#63; and groupId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link CandidateModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param companyId the company ID
+	* @param groupId the group ID
+	* @param start the lower bound of the range of candidates
+	* @param end the upper bound of the range of candidates (not inclusive)
+	* @return the range of matching candidates
+	*/
+	public static List<Candidate> findByFCOMPANY_GROUP_ID(long companyId,
+		long groupId, int start, int end) {
+		return getPersistence()
+				   .findByFCOMPANY_GROUP_ID(companyId, groupId, start, end);
+	}
+
+	/**
+	* Returns an ordered range of all the candidates where companyId = &#63; and groupId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link CandidateModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param companyId the company ID
+	* @param groupId the group ID
+	* @param start the lower bound of the range of candidates
+	* @param end the upper bound of the range of candidates (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @return the ordered range of matching candidates
+	*/
+	public static List<Candidate> findByFCOMPANY_GROUP_ID(long companyId,
+		long groupId, int start, int end,
+		OrderByComparator<Candidate> orderByComparator) {
+		return getPersistence()
+				   .findByFCOMPANY_GROUP_ID(companyId, groupId, start, end,
+			orderByComparator);
+	}
+
+	/**
+	* Returns an ordered range of all the candidates where companyId = &#63; and groupId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link CandidateModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param companyId the company ID
+	* @param groupId the group ID
+	* @param start the lower bound of the range of candidates
+	* @param end the upper bound of the range of candidates (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @param retrieveFromCache whether to retrieve from the finder cache
+	* @return the ordered range of matching candidates
+	*/
+	public static List<Candidate> findByFCOMPANY_GROUP_ID(long companyId,
+		long groupId, int start, int end,
+		OrderByComparator<Candidate> orderByComparator,
+		boolean retrieveFromCache) {
+		return getPersistence()
+				   .findByFCOMPANY_GROUP_ID(companyId, groupId, start, end,
+			orderByComparator, retrieveFromCache);
+	}
+
+	/**
+	* Returns the first candidate in the ordered set where companyId = &#63; and groupId = &#63;.
+	*
+	* @param companyId the company ID
+	* @param groupId the group ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching candidate
+	* @throws NoSuchCandidateException if a matching candidate could not be found
+	*/
+	public static Candidate findByFCOMPANY_GROUP_ID_First(long companyId,
+		long groupId, OrderByComparator<Candidate> orderByComparator)
+		throws com.zeus.hr.exception.NoSuchCandidateException {
+		return getPersistence()
+				   .findByFCOMPANY_GROUP_ID_First(companyId, groupId,
+			orderByComparator);
+	}
+
+	/**
+	* Returns the first candidate in the ordered set where companyId = &#63; and groupId = &#63;.
+	*
+	* @param companyId the company ID
+	* @param groupId the group ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching candidate, or <code>null</code> if a matching candidate could not be found
+	*/
+	public static Candidate fetchByFCOMPANY_GROUP_ID_First(long companyId,
+		long groupId, OrderByComparator<Candidate> orderByComparator) {
+		return getPersistence()
+				   .fetchByFCOMPANY_GROUP_ID_First(companyId, groupId,
+			orderByComparator);
+	}
+
+	/**
+	* Returns the last candidate in the ordered set where companyId = &#63; and groupId = &#63;.
+	*
+	* @param companyId the company ID
+	* @param groupId the group ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching candidate
+	* @throws NoSuchCandidateException if a matching candidate could not be found
+	*/
+	public static Candidate findByFCOMPANY_GROUP_ID_Last(long companyId,
+		long groupId, OrderByComparator<Candidate> orderByComparator)
+		throws com.zeus.hr.exception.NoSuchCandidateException {
+		return getPersistence()
+				   .findByFCOMPANY_GROUP_ID_Last(companyId, groupId,
+			orderByComparator);
+	}
+
+	/**
+	* Returns the last candidate in the ordered set where companyId = &#63; and groupId = &#63;.
+	*
+	* @param companyId the company ID
+	* @param groupId the group ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching candidate, or <code>null</code> if a matching candidate could not be found
+	*/
+	public static Candidate fetchByFCOMPANY_GROUP_ID_Last(long companyId,
+		long groupId, OrderByComparator<Candidate> orderByComparator) {
+		return getPersistence()
+				   .fetchByFCOMPANY_GROUP_ID_Last(companyId, groupId,
+			orderByComparator);
+	}
+
+	/**
+	* Returns the candidates before and after the current candidate in the ordered set where companyId = &#63; and groupId = &#63;.
+	*
+	* @param candidateId the primary key of the current candidate
+	* @param companyId the company ID
+	* @param groupId the group ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the previous, current, and next candidate
+	* @throws NoSuchCandidateException if a candidate with the primary key could not be found
+	*/
+	public static Candidate[] findByFCOMPANY_GROUP_ID_PrevAndNext(
+		long candidateId, long companyId, long groupId,
+		OrderByComparator<Candidate> orderByComparator)
+		throws com.zeus.hr.exception.NoSuchCandidateException {
+		return getPersistence()
+				   .findByFCOMPANY_GROUP_ID_PrevAndNext(candidateId, companyId,
+			groupId, orderByComparator);
+	}
+
+	/**
+	* Removes all the candidates where companyId = &#63; and groupId = &#63; from the database.
+	*
+	* @param companyId the company ID
+	* @param groupId the group ID
+	*/
+	public static void removeByFCOMPANY_GROUP_ID(long companyId, long groupId) {
+		getPersistence().removeByFCOMPANY_GROUP_ID(companyId, groupId);
+	}
+
+	/**
+	* Returns the number of candidates where companyId = &#63; and groupId = &#63;.
+	*
+	* @param companyId the company ID
+	* @param groupId the group ID
+	* @return the number of matching candidates
+	*/
+	public static int countByFCOMPANY_GROUP_ID(long companyId, long groupId) {
+		return getPersistence().countByFCOMPANY_GROUP_ID(companyId, groupId);
+	}
+
+	/**
 	* Caches the candidate in the entity cache if it is enabled.
 	*
 	* @param candidate the candidate

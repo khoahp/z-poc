@@ -15,6 +15,7 @@
 package com.zeus.hr.service.impl;
 
 import java.io.File;
+import java.io.InputStream;
 import java.util.Date;
 import java.util.List;
 
@@ -190,16 +191,17 @@ private static final Log _log = LogFactoryUtil.getLog(CandidateLocalServiceImpl.
 	}
 
 	// Upload file Entry
-	public Candidate addFile(long groupId, long candidateId, String sourceFileName, File file,
-			ServiceContext serviceContext) throws PortalException, SystemException {
+	public Candidate addFile(long groupId, long candidateId, String fileName, String sourceFileName, int fileSize,
+			InputStream inputStream, String fileType, ServiceContext serviceContext)
+			throws PortalException, SystemException {
 
 		long userId = serviceContext.getUserId();
 		long fileEntryId = 0;
 		Candidate candidate = null;
 
 		try {
-			FileEntry fileEntry = FileUploadUtils.uploadCandidateFile(userId, groupId, file, sourceFileName,
-					serviceContext);
+			FileEntry fileEntry = FileUploadUtils.uploadCandidateFile(userId, groupId, inputStream, sourceFileName,
+					fileType, fileSize, serviceContext);
 
 			if (fileEntry != null) {
 				fileEntryId = fileEntry.getFileEntryId();

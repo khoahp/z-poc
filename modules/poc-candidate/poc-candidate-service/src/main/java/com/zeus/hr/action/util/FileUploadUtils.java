@@ -1,6 +1,7 @@
 package com.zeus.hr.action.util;
 
 import java.io.File;
+import java.io.InputStream;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -25,77 +26,92 @@ public class FileUploadUtils {
 	/**
 	 * @param userId
 	 * @param groupId
-	 * @param file
-	 * @param sourceFileName
-	 * @param serviceContext
-	 * @return FileEntry
-	 * @throws Exception
-	 */
-	public static FileEntry uploadCandidateFile(long userId, long groupId, File file, String sourceFileName,
-			ServiceContext serviceContext) throws Exception {
-
-		return uploadFile(userId, groupId, 0, file, sourceFileName, null, FOLDER_NAME_CANDIDATE_FILE, serviceContext);
-	}
-
-	/**
-	 * @param userId
-	 * @param groupId
-	 * @param fileEntryId
-	 * @param file
+	 * @param inputStream
 	 * @param sourceFileName
 	 * @param fileType
-	 * @param destination
+	 * @param fileSize
 	 * @param serviceContext
 	 * @return FileEntry
 	 * @throws Exception
 	 */
-	public static FileEntry uploadFile(long userId, long groupId, long fileEntryId, File file, String sourceFileName,
-			String fileType, String destination, ServiceContext serviceContext) throws Exception {
+    public static FileEntry uploadCandidateFile(long userId, long groupId, 
+            InputStream inputStream, String sourceFileName,
+            String fileType, long fileSize, ServiceContext serviceContext) 
+        throws Exception {
+        
+        return uploadFile(userId, groupId, 0, inputStream, sourceFileName, 
+                fileType, fileSize, FOLDER_NAME_CANDIDATE_FILE, serviceContext);
+    }
 
-		FileEntry fileEntry = null;
+    /**
+     * @param userId
+     * @param groupId
+     * @param fileEntryId
+     * @param inputStream
+     * @param sourceFileName
+     * @param fileType
+     * @param fileSize
+     * @param destination
+     * @param serviceContext
+     * @return FileEntry
+     * @throws Exception
+     */
+    public static FileEntry uploadFile(long userId, long groupId, long fileEntryId, InputStream inputStream, String sourceFileName,
+            String fileType, long fileSize, String destination, ServiceContext serviceContext) 
+        throws Exception {
+        
+        FileEntry fileEntry = null;
 
-		if (file != null && Validator.isNotNull(sourceFileName)) {
+        if (inputStream != null && Validator.isNotNull(sourceFileName)) {
+            
+            if(Validator.isNull(fileType)) {
+                fileType = MimeTypesUtil.getContentType(sourceFileName);
+            }
+            
+            if(fileSize == 0) {
+                fileSize = inputStream.available();
+                //byte[] bytes = FileUtil.getBytes(inputStream, -1, false);
+                //fileSize = bytes.length;
+            }
+            
+            String title = getFileName(sourceFileName);
 
-			if (Validator.isNull(fileType)) {
-				fileType = MimeTypesUtil.getContentType(sourceFileName);
-			}
+            serviceContext.setAddGroupPermissions(true);
+            serviceContext.setAddGuestPermissions(true);
 
-			String title = getFileName(sourceFileName);
+            Calendar calendar = Calendar.getInstance();
 
-			serviceContext.setAddGroupPermissions(true);
-			serviceContext.setAddGuestPermissions(true);
+            calendar.setTime(new Date());
+            
+            if(destination == null) {
+                destination = StringPool.BLANK;
+            }
 
-			Calendar calendar = Calendar.getInstance();
+            destination += calendar.get(Calendar.YEAR) + StringPool.SLASH;
+            destination += calendar.get(Calendar.MONTH) + StringPool.SLASH;
+            destination += calendar.get(Calendar.DAY_OF_MONTH);
 
-			calendar.setTime(new Date());
+            DLFolder dlFolder = DLFolderUtil.getTargetFolder(userId, groupId, groupId, false, 0, destination,
+                    StringPool.BLANK, false, serviceContext);
 
-			if (destination == null) {
-				destination = StringPool.BLANK;
-			}
+            User user = UserLocalServiceUtil.getUser(serviceContext.getUserId());
 
-			destination += calendar.get(Calendar.YEAR) + StringPool.SLASH;
-			destination += calendar.get(Calendar.MONTH) + StringPool.SLASH;
-			destination += calendar.get(Calendar.DAY_OF_MONTH);
+            PermissionChecker checker = PermissionCheckerFactoryUtil.create(user);
+            PermissionThreadLocal.setPermissionChecker(checker);
+            
+            if(fileEntryId > 0) {
+                fileEntry = DLAppLocalServiceUtil.updateFileEntry(userId, fileEntryId, sourceFileName, 
+                        fileType, title, title, title, true, inputStream, fileSize, serviceContext);
+            } else {
+                fileEntry = DLAppLocalServiceUtil.addFileEntry(userId, groupId, dlFolder.getFolderId(), title,
+                    fileType, title, title,
+                    StringPool.BLANK, inputStream, fileSize, serviceContext);
+            }
 
-			DLFolder dlFolder = DLFolderUtil.getTargetFolder(userId, groupId, groupId, false, 0, destination,
-					StringPool.BLANK, false, serviceContext);
+        }
 
-			User user = UserLocalServiceUtil.getUser(serviceContext.getUserId());
-
-			PermissionChecker checker = PermissionCheckerFactoryUtil.create(user);
-			PermissionThreadLocal.setPermissionChecker(checker);
-
-			if (fileEntryId > 0) {
-				fileEntry = DLAppLocalServiceUtil.updateFileEntry(userId, fileEntryId, sourceFileName, fileType, title,
-						title, title, true, file, serviceContext);
-			} else {
-				fileEntry = DLAppLocalServiceUtil.addFileEntry(userId, groupId, dlFolder.getFolderId(), title, fileType,
-						title, title, StringPool.BLANK, file, serviceContext);
-			}
-		}
-
-		return fileEntry;
-	}
+        return fileEntry;
+    }
 
 	/**
 	 * Auto generate filename for comunicate with multi system

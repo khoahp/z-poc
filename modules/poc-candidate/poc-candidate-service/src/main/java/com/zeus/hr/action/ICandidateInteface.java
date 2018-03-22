@@ -1,6 +1,7 @@
 package com.zeus.hr.action;
 
 import java.io.File;
+import java.io.InputStream;
 import java.util.Date;
 import java.util.List;
 
@@ -19,12 +20,14 @@ public interface ICandidateInteface {
 			Date receivedDate, String internalNote, String internalDetails, String attachment, int rating, int status,
 			ServiceContext serviceContext) throws PortalException;
 
-	public Candidate updateCandidate(long groupId, long candidateId, String firstName, String lastName, Date dateOfBirth, String mobilePhone,
-			String email, long city, String appliedFor, String note, String skills, String source, String internalId,
-			Date receivedDate, String internalNote, String internalDetails, String attachment, int rating,
-			int status, ServiceContext serviceContext) throws PortalException;
+	public Candidate updateCandidate(long groupId, long candidateId, String firstName, String lastName,
+			Date dateOfBirth, String mobilePhone, String email, long city, String appliedFor, String note,
+			String skills, String source, String internalId, Date receivedDate, String internalNote,
+			String internalDetails, String attachment, int rating, int status, ServiceContext serviceContext)
+			throws PortalException;
 
 	public Candidate deleteById(long candidateId) throws PortalException;
 
-	public Candidate addFileByCandidateId(long groupId, long candidateId,String sourceFileName, File file, ServiceContext serviceContext) throws PortalException;
+	public Candidate addFileByCandidateId(long groupId, long candidateId, String fileName, String sourceFileName,
+			int fileSize, InputStream inputStream, String fileType, ServiceContext serviceContext) throws PortalException;
 }

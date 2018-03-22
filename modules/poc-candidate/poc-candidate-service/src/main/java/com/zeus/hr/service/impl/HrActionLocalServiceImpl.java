@@ -14,6 +14,9 @@
 
 package com.zeus.hr.service.impl;
 
+import java.util.List;
+
+import com.zeus.hr.model.HrAction;
 import com.zeus.hr.service.base.HrActionLocalServiceBaseImpl;
 
 /**
@@ -36,4 +39,8 @@ public class HrActionLocalServiceImpl extends HrActionLocalServiceBaseImpl {
 	 *
 	 * Never reference this class directly. Always use {@link com.zeus.hr.service.HrActionLocalServiceUtil} to access the hr action local service.
 	 */
+
+	public List<HrAction> getHrActionsByCandidateId(long companyId, long groupId, long candidateId) {
+		return hrActionPersistence.findBycandidateId(companyId, groupId, candidateId);
+	}
 }

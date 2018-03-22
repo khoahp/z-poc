@@ -27,25 +27,24 @@ public class ICandidateActionsImpl implements ICandidateInteface {
 	@Override
 	public Candidate addCandidate(long groupId, String firstName, String lastName, Date dateOfBirth, String mobilePhone,
 			String email, long city, String appliedFor, String note, String skills, String source, String internalId,
-			Date receivedDate, String internalNote, String internalDetails, String attachment, int rating,
-			int status, ServiceContext serviceContext) throws PortalException {
+			Date receivedDate, String internalNote, String internalDetails, String attachment, int rating, int status,
+			ServiceContext serviceContext) throws PortalException {
 
-		return CandidateLocalServiceUtil.insertCandidate(groupId, firstName, lastName, dateOfBirth, mobilePhone,
-				email, city, appliedFor, note, skills, source, internalId,
-				receivedDate, internalNote, internalDetails, attachment, rating,
-				status, serviceContext);
+		return CandidateLocalServiceUtil.insertCandidate(groupId, firstName, lastName, dateOfBirth, mobilePhone, email,
+				city, appliedFor, note, skills, source, internalId, receivedDate, internalNote, internalDetails,
+				attachment, rating, status, serviceContext);
 	}
 
 	@Override
-	public Candidate updateCandidate(long groupId, long candidateId, String firstName, String lastName, Date dateOfBirth, String mobilePhone,
-			String email, long city, String appliedFor, String note, String skills, String source, String internalId,
-			Date receivedDate, String internalNote, String internalDetails, String attachment, int rating,
-			int status, ServiceContext serviceContext) throws PortalException {
+	public Candidate updateCandidate(long groupId, long candidateId, String firstName, String lastName,
+			Date dateOfBirth, String mobilePhone, String email, long city, String appliedFor, String note,
+			String skills, String source, String internalId, Date receivedDate, String internalNote,
+			String internalDetails, String attachment, int rating, int status, ServiceContext serviceContext)
+			throws PortalException {
 		// TODO Auto-generated method stub
-		return CandidateLocalServiceUtil.updateCandidateInfo(groupId, candidateId, firstName, lastName, dateOfBirth, mobilePhone,
-				email, city, appliedFor, note, skills, source, internalId,
-				receivedDate, internalNote, internalDetails, attachment, rating,
-				status, serviceContext);
+		return CandidateLocalServiceUtil.updateCandidateInfo(groupId, candidateId, firstName, lastName, dateOfBirth,
+				mobilePhone, email, city, appliedFor, note, skills, source, internalId, receivedDate, internalNote,
+				internalDetails, attachment, rating, status, serviceContext);
 	}
 
 	@Override
@@ -54,9 +53,10 @@ public class ICandidateActionsImpl implements ICandidateInteface {
 	}
 
 	@Override
-	public Candidate addFileByCandidateId(long groupId, long candidateId, String sourceFileName, File file,
-			ServiceContext serviceContext) throws SystemException, PortalException {
-
-		return CandidateLocalServiceUtil.addFile(groupId, candidateId, sourceFileName, file, serviceContext);
+	public Candidate addFileByCandidateId(long groupId, long candidateId, String fileName, String sourceFileName,
+			int fileSize, InputStream inputStream, String fileType, ServiceContext serviceContext)
+			throws PortalException {
+		return CandidateLocalServiceUtil.addFile(groupId, candidateId, fileName, sourceFileName, fileSize, inputStream,
+				fileType, serviceContext);
 	}
 }

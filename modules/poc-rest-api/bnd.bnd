@@ -8,3 +8,10 @@ Export-Package: \
 	io.swagger.annotations,\
 	io.swagger.annotations.*,\
 	com.fasterxml.jackson.dataformat.xml.annotation,\
+	com.zeus.hr.action,\
+	com.zeus.hr.action.impl,\
+	poc.rest.auth,\
+	poc.rest.auth.exception,\
+	com.zeus.hr.service.impl,\
+	com.zeus.hr.action.util,\
+	com.zeus.hr.service.base

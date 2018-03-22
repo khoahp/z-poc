@@ -236,6 +236,10 @@ public interface HrActionLocalService extends BaseLocalService,
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public List<HrAction> getHrActions(int start, int end);
 
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<HrAction> getHrActionsByCandidateId(long companyId,
+		long groupId, long candidateId);
+
 	/**
 	* Returns all the hr actions matching the UUID and company.
 	*

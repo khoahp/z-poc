@@ -30,6 +30,7 @@ import com.liferay.portal.kernel.search.Indexable;
 import com.liferay.portal.kernel.search.IndexableType;
 import com.liferay.portal.kernel.service.BaseLocalService;
 import com.liferay.portal.kernel.service.PersistedModelLocalService;
+import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.transaction.Isolation;
 import com.liferay.portal.kernel.transaction.Propagation;
 import com.liferay.portal.kernel.transaction.Transactional;
@@ -37,8 +38,10 @@ import com.liferay.portal.kernel.util.OrderByComparator;
 
 import com.zeus.hr.model.Candidate;
 
+import java.io.InputStream;
 import java.io.Serializable;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -95,6 +98,14 @@ public interface CandidateLocalService extends BaseLocalService,
 	*/
 	@Indexable(type = IndexableType.REINDEX)
 	public Candidate addCandidate(Candidate candidate);
+
+	public Candidate addEditCandidate(Candidate object)
+		throws SystemException;
+
+	public Candidate addFile(long groupId, long candidateId,
+		java.lang.String fileName, java.lang.String sourceFileName,
+		int fileSize, InputStream inputStream, java.lang.String fileType,
+		ServiceContext serviceContext) throws PortalException, SystemException;
 
 	/**
 	* Creates a new candidate with the primary key. Does not add the candidate to the database.
@@ -160,6 +171,16 @@ public interface CandidateLocalService extends BaseLocalService,
 	public Candidate getCandidateByUuidAndGroupId(java.lang.String uuid,
 		long groupId) throws PortalException;
 
+	public Candidate insertCandidate(long groupId, java.lang.String firstName,
+		java.lang.String lastName, Date dateOfBirth,
+		java.lang.String mobilePhone, java.lang.String email, long city,
+		java.lang.String appliedFor, java.lang.String note,
+		java.lang.String skills, java.lang.String source,
+		java.lang.String internalId, Date receivedDate,
+		java.lang.String internalNote, java.lang.String internalDetails,
+		java.lang.String attachment, int rating, int status,
+		ServiceContext serviceContext);
+
 	/**
 	* Updates the candidate in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.
 	*
@@ -168,6 +189,16 @@ public interface CandidateLocalService extends BaseLocalService,
 	*/
 	@Indexable(type = IndexableType.REINDEX)
 	public Candidate updateCandidate(Candidate candidate);
+
+	public Candidate updateCandidateInfo(long groupId, long id,
+		java.lang.String firstName, java.lang.String lastName,
+		Date dateOfBirth, java.lang.String mobilePhone, java.lang.String email,
+		long city, java.lang.String appliedFor, java.lang.String note,
+		java.lang.String skills, java.lang.String source,
+		java.lang.String internalId, Date receivedDate,
+		java.lang.String internalNote, java.lang.String internalDetails,
+		java.lang.String attachment, int rating, int status,
+		ServiceContext serviceContext);
 
 	/**
 	* Returns the number of candidates.
@@ -222,6 +253,13 @@ public interface CandidateLocalService extends BaseLocalService,
 	*/
 	public <T> List<T> dynamicQuery(DynamicQuery dynamicQuery, int start,
 		int end, OrderByComparator<T> orderByComparator);
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<Candidate> fetchCandidate(long companyId, long groupId,
+		int status) throws SystemException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<Candidate> getAllCandidates(long companyId, long groupId);
 
 	/**
 	* Returns a range of all the candidates.

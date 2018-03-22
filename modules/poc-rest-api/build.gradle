@@ -27,6 +27,10 @@ dependencies {
 	compileOnly project(":modules:poc-backend-auth")
 	
 	testCompile group: "junit", name: "junit", version: "4.12"
+
+	compileOnly project(":modules:poc-candidate:poc-candidate-api")
+	compileOnly project(":modules:poc-candidate:poc-candidate-service")
+	compileOnly project(":modules:poc-backend-auth")
 }	
 
 sourceSets {

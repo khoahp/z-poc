@@ -527,6 +527,153 @@ public interface CandidatePersistence extends BasePersistence<Candidate> {
 	public int countBystatus(long companyId, long groupId, int status);
 
 	/**
+	* Returns all the candidates where companyId = &#63; and groupId = &#63;.
+	*
+	* @param companyId the company ID
+	* @param groupId the group ID
+	* @return the matching candidates
+	*/
+	public java.util.List<Candidate> findByFCOMPANY_GROUP_ID(long companyId,
+		long groupId);
+
+	/**
+	* Returns a range of all the candidates where companyId = &#63; and groupId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link CandidateModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param companyId the company ID
+	* @param groupId the group ID
+	* @param start the lower bound of the range of candidates
+	* @param end the upper bound of the range of candidates (not inclusive)
+	* @return the range of matching candidates
+	*/
+	public java.util.List<Candidate> findByFCOMPANY_GROUP_ID(long companyId,
+		long groupId, int start, int end);
+
+	/**
+	* Returns an ordered range of all the candidates where companyId = &#63; and groupId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link CandidateModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param companyId the company ID
+	* @param groupId the group ID
+	* @param start the lower bound of the range of candidates
+	* @param end the upper bound of the range of candidates (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @return the ordered range of matching candidates
+	*/
+	public java.util.List<Candidate> findByFCOMPANY_GROUP_ID(long companyId,
+		long groupId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<Candidate> orderByComparator);
+
+	/**
+	* Returns an ordered range of all the candidates where companyId = &#63; and groupId = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link CandidateModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+	* </p>
+	*
+	* @param companyId the company ID
+	* @param groupId the group ID
+	* @param start the lower bound of the range of candidates
+	* @param end the upper bound of the range of candidates (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @param retrieveFromCache whether to retrieve from the finder cache
+	* @return the ordered range of matching candidates
+	*/
+	public java.util.List<Candidate> findByFCOMPANY_GROUP_ID(long companyId,
+		long groupId, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator<Candidate> orderByComparator,
+		boolean retrieveFromCache);
+
+	/**
+	* Returns the first candidate in the ordered set where companyId = &#63; and groupId = &#63;.
+	*
+	* @param companyId the company ID
+	* @param groupId the group ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching candidate
+	* @throws NoSuchCandidateException if a matching candidate could not be found
+	*/
+	public Candidate findByFCOMPANY_GROUP_ID_First(long companyId,
+		long groupId,
+		com.liferay.portal.kernel.util.OrderByComparator<Candidate> orderByComparator)
+		throws NoSuchCandidateException;
+
+	/**
+	* Returns the first candidate in the ordered set where companyId = &#63; and groupId = &#63;.
+	*
+	* @param companyId the company ID
+	* @param groupId the group ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching candidate, or <code>null</code> if a matching candidate could not be found
+	*/
+	public Candidate fetchByFCOMPANY_GROUP_ID_First(long companyId,
+		long groupId,
+		com.liferay.portal.kernel.util.OrderByComparator<Candidate> orderByComparator);
+
+	/**
+	* Returns the last candidate in the ordered set where companyId = &#63; and groupId = &#63;.
+	*
+	* @param companyId the company ID
+	* @param groupId the group ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching candidate
+	* @throws NoSuchCandidateException if a matching candidate could not be found
+	*/
+	public Candidate findByFCOMPANY_GROUP_ID_Last(long companyId, long groupId,
+		com.liferay.portal.kernel.util.OrderByComparator<Candidate> orderByComparator)
+		throws NoSuchCandidateException;
+
+	/**
+	* Returns the last candidate in the ordered set where companyId = &#63; and groupId = &#63;.
+	*
+	* @param companyId the company ID
+	* @param groupId the group ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching candidate, or <code>null</code> if a matching candidate could not be found
+	*/
+	public Candidate fetchByFCOMPANY_GROUP_ID_Last(long companyId,
+		long groupId,
+		com.liferay.portal.kernel.util.OrderByComparator<Candidate> orderByComparator);
+
+	/**
+	* Returns the candidates before and after the current candidate in the ordered set where companyId = &#63; and groupId = &#63;.
+	*
+	* @param candidateId the primary key of the current candidate
+	* @param companyId the company ID
+	* @param groupId the group ID
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the previous, current, and next candidate
+	* @throws NoSuchCandidateException if a candidate with the primary key could not be found
+	*/
+	public Candidate[] findByFCOMPANY_GROUP_ID_PrevAndNext(long candidateId,
+		long companyId, long groupId,
+		com.liferay.portal.kernel.util.OrderByComparator<Candidate> orderByComparator)
+		throws NoSuchCandidateException;
+
+	/**
+	* Removes all the candidates where companyId = &#63; and groupId = &#63; from the database.
+	*
+	* @param companyId the company ID
+	* @param groupId the group ID
+	*/
+	public void removeByFCOMPANY_GROUP_ID(long companyId, long groupId);
+
+	/**
+	* Returns the number of candidates where companyId = &#63; and groupId = &#63;.
+	*
+	* @param companyId the company ID
+	* @param groupId the group ID
+	* @return the number of matching candidates
+	*/
+	public int countByFCOMPANY_GROUP_ID(long companyId, long groupId);
+
+	/**
 	* Caches the candidate in the entity cache if it is enabled.
 	*
 	* @param candidate the candidate

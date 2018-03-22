@@ -83,6 +83,25 @@ public class CandidateLocalServiceWrapper implements CandidateLocalService,
 		return _candidateLocalService.addCandidate(candidate);
 	}
 
+	@Override
+	public com.zeus.hr.model.Candidate addEditCandidate(
+		com.zeus.hr.model.Candidate object)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _candidateLocalService.addEditCandidate(object);
+	}
+
+	@Override
+	public com.zeus.hr.model.Candidate addFile(long groupId, long candidateId,
+		java.lang.String fileName, java.lang.String sourceFileName,
+		int fileSize, java.io.InputStream inputStream,
+		java.lang.String fileType,
+		com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _candidateLocalService.addFile(groupId, candidateId, fileName,
+			sourceFileName, fileSize, inputStream, fileType, serviceContext);
+	}
+
 	/**
 	* Creates a new candidate with the primary key. Does not add the candidate to the database.
 	*
@@ -166,6 +185,23 @@ public class CandidateLocalServiceWrapper implements CandidateLocalService,
 		return _candidateLocalService.getCandidateByUuidAndGroupId(uuid, groupId);
 	}
 
+	@Override
+	public com.zeus.hr.model.Candidate insertCandidate(long groupId,
+		java.lang.String firstName, java.lang.String lastName,
+		java.util.Date dateOfBirth, java.lang.String mobilePhone,
+		java.lang.String email, long city, java.lang.String appliedFor,
+		java.lang.String note, java.lang.String skills,
+		java.lang.String source, java.lang.String internalId,
+		java.util.Date receivedDate, java.lang.String internalNote,
+		java.lang.String internalDetails, java.lang.String attachment,
+		int rating, int status,
+		com.liferay.portal.kernel.service.ServiceContext serviceContext) {
+		return _candidateLocalService.insertCandidate(groupId, firstName,
+			lastName, dateOfBirth, mobilePhone, email, city, appliedFor, note,
+			skills, source, internalId, receivedDate, internalNote,
+			internalDetails, attachment, rating, status, serviceContext);
+	}
+
 	/**
 	* Updates the candidate in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.
 	*
@@ -176,6 +212,24 @@ public class CandidateLocalServiceWrapper implements CandidateLocalService,
 	public com.zeus.hr.model.Candidate updateCandidate(
 		com.zeus.hr.model.Candidate candidate) {
 		return _candidateLocalService.updateCandidate(candidate);
+	}
+
+	@Override
+	public com.zeus.hr.model.Candidate updateCandidateInfo(long groupId,
+		long id, java.lang.String firstName, java.lang.String lastName,
+		java.util.Date dateOfBirth, java.lang.String mobilePhone,
+		java.lang.String email, long city, java.lang.String appliedFor,
+		java.lang.String note, java.lang.String skills,
+		java.lang.String source, java.lang.String internalId,
+		java.util.Date receivedDate, java.lang.String internalNote,
+		java.lang.String internalDetails, java.lang.String attachment,
+		int rating, int status,
+		com.liferay.portal.kernel.service.ServiceContext serviceContext) {
+		return _candidateLocalService.updateCandidateInfo(groupId, id,
+			firstName, lastName, dateOfBirth, mobilePhone, email, city,
+			appliedFor, note, skills, source, internalId, receivedDate,
+			internalNote, internalDetails, attachment, rating, status,
+			serviceContext);
 	}
 
 	/**
@@ -249,6 +303,19 @@ public class CandidateLocalServiceWrapper implements CandidateLocalService,
 		com.liferay.portal.kernel.util.OrderByComparator<T> orderByComparator) {
 		return _candidateLocalService.dynamicQuery(dynamicQuery, start, end,
 			orderByComparator);
+	}
+
+	@Override
+	public java.util.List<com.zeus.hr.model.Candidate> fetchCandidate(
+		long companyId, long groupId, int status)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _candidateLocalService.fetchCandidate(companyId, groupId, status);
+	}
+
+	@Override
+	public java.util.List<com.zeus.hr.model.Candidate> getAllCandidates(
+		long companyId, long groupId) {
+		return _candidateLocalService.getAllCandidates(companyId, groupId);
 	}
 
 	/**
